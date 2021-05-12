@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  myawardprogram.api:
+    image: ${DOCKER_REGISTRY-}myawardprogramapi
+    build:
+      context: .
+      dockerfile: src/MyAwardProgram.Api/Dockerfile
