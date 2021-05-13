@@ -12,7 +12,7 @@ namespace MyAwardProgram.Domain.Entities.Orders
         public DateTime Occurrence { get; set; }
         
         public User User { get; set; }
-        public UserAddress UserAddress { get; set; }
+        public Address Address { get; set; }
 
         public ICollection<Movement> Movements { get; set; }
         public ICollection<Product> Products { get; set; }

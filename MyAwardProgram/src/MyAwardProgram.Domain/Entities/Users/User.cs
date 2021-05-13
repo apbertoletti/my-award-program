@@ -13,7 +13,7 @@ namespace MyAwardProgram.Domain.Entities.Users
         public string Phone { get; set; }
         public string Password { get; set; }
 
-        public ICollection<UserAddress> Addresses { get; set; }
+        public ICollection<Address> Adresses { get; set; }
         public ICollection<Movement> Movements { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
