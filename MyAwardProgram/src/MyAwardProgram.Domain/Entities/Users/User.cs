@@ -11,6 +11,7 @@ namespace MyAwardProgram.Domain.Entities.Users
         public string Email { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
+        public string Password { get; set; }
 
         public ICollection<UserAddress> Addresses { get; set; }
         public ICollection<Movement> Movements { get; set; }
