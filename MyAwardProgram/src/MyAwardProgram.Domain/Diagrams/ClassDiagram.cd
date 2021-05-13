@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyAwardProgram.Domain.Entities.Movements.Movement">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEDABAAAAACACAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Entities\Movements\Movement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyAwardProgram.Domain.Entities.Orders.Order">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <AssociationLine Name="Movements" Type="MyAwardProgram.Domain.Entities.Movements.Movement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="4.375" />
+        <Point X="4.625" Y="4.375" />
+        <Point X="4.625" Y="3.875" />
+        <Point X="5.75" Y="3.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACACAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Entities\Orders\Order.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Products" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Movements" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MyAwardProgram.Domain.Entities.Partners.Partner">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Entities\Partners\Partner.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MyAwardProgram.Domain.Entities.Partners.Product">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAABAAAIAQAAAAAAAAAAAAAEAAAAAg=</HashCode>
+      <FileName>Entities\Partners\Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Orders" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Movements" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MyAwardProgram.Domain.Entities.Users.User">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Movements" Type="MyAwardProgram.Domain.Entities.Movements.Movement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.438" Y="2.31" />
+        <Point X="1.438" Y="3.288" />
+        <Point X="3.542" Y="3.288" Type="JumpStart" />
+        <Point X="3.708" Y="3.288" Type="JumpEnd" />
+        <Point X="5.75" Y="3.288" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Orders" Type="MyAwardProgram.Domain.Entities.Orders.Order" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1" Y="2.31" />
+        <Point X="1" Y="4.809" />
+        <Point X="2.75" Y="4.809" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAACAAAAAABAAAAASAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\Users\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Addresses" />
+      <Property Name="Movements" />
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MyAwardProgram.Domain.Entities.Users.UserAddress">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEBAAAAAAAAAAAIAAAAAAQAAAIAAAADAQAABAAAAAA=</HashCode>
+      <FileName>Entities\Users\UserAddress.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Interface Name="System.Collections.Generic.ICollection&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
