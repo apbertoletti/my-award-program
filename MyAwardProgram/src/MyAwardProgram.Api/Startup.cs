@@ -29,7 +29,7 @@ namespace MyAwardProgram.Api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApiNet5", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Award Program API", Version = "v1" });
             });
         }
 
@@ -40,7 +40,7 @@ namespace MyAwardProgram.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiNet5 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyAwardProgramApi"));
             }
 
             app.UseHttpsRedirection();
