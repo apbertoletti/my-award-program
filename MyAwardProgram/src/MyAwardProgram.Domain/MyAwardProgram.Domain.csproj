@@ -5,21 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyAwardProgram.Shared\MyAwardProgram.Shared.csproj" />
+    <Compile Remove="Entities\Movements\DTOs\**" />
+    <Compile Remove="Entities\Movements\Services\**" />
+    <Compile Remove="Entities\Orders\DTOs\**" />
+    <Compile Remove="Entities\Orders\Enums\**" />
+    <Compile Remove="Entities\Orders\Services\**" />
+    <Compile Remove="Entities\Partners\DTOs\**" />
+    <Compile Remove="Entities\Partners\Services\**" />
+    <EmbeddedResource Remove="Entities\Movements\DTOs\**" />
+    <EmbeddedResource Remove="Entities\Movements\Services\**" />
+    <EmbeddedResource Remove="Entities\Orders\DTOs\**" />
+    <EmbeddedResource Remove="Entities\Orders\Enums\**" />
+    <EmbeddedResource Remove="Entities\Orders\Services\**" />
+    <EmbeddedResource Remove="Entities\Partners\DTOs\**" />
+    <EmbeddedResource Remove="Entities\Partners\Services\**" />
+    <None Remove="Entities\Movements\DTOs\**" />
+    <None Remove="Entities\Movements\Services\**" />
+    <None Remove="Entities\Orders\DTOs\**" />
+    <None Remove="Entities\Orders\Enums\**" />
+    <None Remove="Entities\Orders\Services\**" />
+    <None Remove="Entities\Partners\DTOs\**" />
+    <None Remove="Entities\Partners\Services\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Requests\" />
-    <Folder Include="Entities\Movements\DTOs\Responses\" />
-    <Folder Include="Entities\Movements\DTOs\Requests\" />
-    <Folder Include="Entities\Movements\Services\" />
-    <Folder Include="Entities\Orders\DTOs\Requests\" />
-    <Folder Include="Entities\Orders\DTOs\Responses\" />
-    <Folder Include="Entities\Orders\Enums\" />
-    <Folder Include="Entities\Orders\Services\" />
-    <Folder Include="Entities\Partners\DTOs\Requests\" />
-    <Folder Include="Entities\Partners\DTOs\Responses\" />
-    <Folder Include="Entities\Partners\Services\" />
+    <ProjectReference Include="..\MyAwardProgram.Shared\MyAwardProgram.Shared.csproj" />
   </ItemGroup>
 
 </Project>
