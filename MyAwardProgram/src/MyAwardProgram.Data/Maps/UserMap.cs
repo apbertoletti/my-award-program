@@ -29,6 +29,9 @@ namespace MyAwardProgram.Data.Maps
             entity.Property(p => p.Password)
                 .HasMaxLength(25)
                 .IsRequired();
+
+            entity.Property(p => p.Role)                
+                .IsRequired();
         }
     }
 }

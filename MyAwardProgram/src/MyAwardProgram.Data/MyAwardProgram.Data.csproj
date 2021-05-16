@@ -21,8 +21,4 @@
     <ProjectReference Include="..\MyAwardProgram.Domain\MyAwardProgram.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>
