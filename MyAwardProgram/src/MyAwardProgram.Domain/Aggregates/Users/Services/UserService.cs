@@ -2,6 +2,7 @@
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 using MyAwardProgram.Domain.Interfaces.Repositories;
 using MyAwardProgram.Domain.Interfaces.Services;
+using MyAwardProgram.Shared.Interfaces;
 
 namespace MyAwardProgram.Domain.Aggregates.Users.Services
 {
@@ -9,20 +10,23 @@ namespace MyAwardProgram.Domain.Aggregates.Users.Services
     {
         private IUserRepository _userRepository;
         private ITokenService _tokenService;
+        private ICryptoHelper _crypoHelper;
 
         public UserService(
             IUserRepository userRepository,
-            ITokenService tokenService)
+            ITokenService tokenService,
+            ICryptoHelper crypoHelper)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
+            _crypoHelper = crypoHelper;
         }
 
         public LoginResponse LoginUser(LoginRequest loginRequest)
         {
             var user = _userRepository.Find(c =>
                 c.Email == loginRequest.Email &&
-                c.Password == loginRequest.Password);
+                c.Password == _crypoHelper.GenerateHash(loginRequest.Password));
 
             if (user == null)
                 return null;

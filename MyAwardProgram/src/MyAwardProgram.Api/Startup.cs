@@ -18,6 +18,8 @@ using MyAwardProgram.Domain.Aggregates.Users.Services;
 using MyAwardProgram.Domain.Interfaces.Repositories;
 using MyAwardProgram.Domain.Interfaces.Services;
 using MyAwardProgram.Security;
+using MyAwardProgram.Shared.Helpers;
+using MyAwardProgram.Shared.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -267,12 +269,13 @@ namespace MyAwardProgram.Api
         {
             if (!context.Users.Any())
             {
+                var crypoHelper = new CryptoHelper();
                 context.Users.AddRange(new User[]
                 {
-                    new User { CPF = "12345678901", Name = "José da Silva", Email = "jose@empresa.com", Password = "senha99*", Role = UserRoleEnum.Consumer },
-                    new User { CPF = "78945612342", Name = "Carolina Alberta Nunes", Email = "carol@dominio.com", Password = "88pass*", Role = UserRoleEnum.Consumer},
-                    new User { CPF = "35524234445", Name = "Maria Luiza Cartoz", Email = "malu@itau.com", Password = "pass55**", Role = UserRoleEnum.Partner },
-                    new User { CPF = "98445342234", Name = "Humberto Gartner", Email = "humberto@dotz.com", Password = "Hub*dotz", Role = UserRoleEnum.Admin },
+                    new User { CPF = "12345678901", Name = "José da Silva", Email = "jose@empresa.com", Password = crypoHelper.GenerateHash("senha99*"), Role = UserRoleEnum.Consumer },
+                    new User { CPF = "78945612342", Name = "Carolina Alberta Nunes", Email = "carol@dominio.com", Password = crypoHelper.GenerateHash("88pass*"), Role = UserRoleEnum.Consumer},
+                    new User { CPF = "35524234445", Name = "Maria Luiza Cartoz", Email = "malu@itau.com", Password = crypoHelper.GenerateHash("pass55**"), Role = UserRoleEnum.Partner },
+                    new User { CPF = "98445342234", Name = "Humberto Gartner", Email = "humberto@dotz.com", Password = crypoHelper.GenerateHash("Hub*dotz"), Role = UserRoleEnum.Admin },
                 });
 
                 context.SaveChanges();
@@ -288,6 +291,9 @@ namespace MyAwardProgram.Api
             // Infra - Data
             services.AddScoped<AppContextDB>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            //Common - Helpers
+            services.AddScoped<ICryptoHelper, CryptoHelper>();
         }
     }
 }
