@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MyAwardProgram.Data.Contexts;
+using MyAwardProgram.Data.Repositories;
 using MyAwardProgram.Domain.Entities.Movements;
 using MyAwardProgram.Domain.Entities.Movements.Enums;
 using MyAwardProgram.Domain.Entities.Orders;
@@ -13,6 +14,10 @@ using MyAwardProgram.Domain.Entities.Partners;
 using MyAwardProgram.Domain.Entities.Partners.Enums;
 using MyAwardProgram.Domain.Entities.Users;
 using MyAwardProgram.Domain.Entities.Users.Enums;
+using MyAwardProgram.Domain.Entities.Users.Services;
+using MyAwardProgram.Domain.Interfaces.Repositories;
+using MyAwardProgram.Domain.Interfaces.Services;
+using MyAwardProgram.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +50,8 @@ namespace MyAwardProgram.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My Award Program API", Version = "v1" });
             });
+
+            SetupIoC(services);
         }
 
         private string GetConnectionString()
@@ -270,6 +277,17 @@ namespace MyAwardProgram.Api
 
                 context.SaveChanges();
             }
+        }
+
+        protected virtual void SetupIoC(IServiceCollection services)
+        {
+            // Domain - Services 
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITokenService, TokenService>();
+
+            // Infra - Data
+            services.AddScoped<AppContextDB>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

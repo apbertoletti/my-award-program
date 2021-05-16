@@ -20,8 +20,6 @@
     <Folder Include="Entities\Partners\DTOs\Requests\" />
     <Folder Include="Entities\Partners\DTOs\Responses\" />
     <Folder Include="Entities\Partners\Services\" />
-    <Folder Include="Entities\Users\DTOs\Responses\" />
-    <Folder Include="Entities\Users\Services\" />
   </ItemGroup>
 
 </Project>

@@ -24,11 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MyAwardProgram.Data\MyAwardProgram.Data.csproj" />
+    <ProjectReference Include="..\MyAwardProgram.Security\MyAwardProgram.Security.csproj" />
   </ItemGroup>
 
 </Project>
