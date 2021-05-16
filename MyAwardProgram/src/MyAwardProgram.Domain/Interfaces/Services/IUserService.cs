@@ -1,5 +1,5 @@
-﻿using MyAwardProgram.Domain.Entities.Users.DTOs.Requests;
-using MyAwardProgram.Domain.Entities.Users.DTOs.Responses;
+﻿using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
+using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 
 namespace MyAwardProgram.Domain.Interfaces.Services
 {

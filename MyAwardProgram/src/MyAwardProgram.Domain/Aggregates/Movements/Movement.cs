@@ -1,11 +1,11 @@
-﻿using MyAwardProgram.Domain.Entities.Movements.Enums;
-using MyAwardProgram.Domain.Entities.Orders;
-using MyAwardProgram.Domain.Entities.Partners;
-using MyAwardProgram.Domain.Entities.Users;
+﻿using MyAwardProgram.Domain.Aggregates.Movements.Enums;
+using MyAwardProgram.Domain.Aggregates.Orders;
+using MyAwardProgram.Domain.Aggregates.Partners;
+using MyAwardProgram.Domain.Aggregates.Users;
 using MyAwardProgram.Shared.Entities;
 using System;
 
-namespace MyAwardProgram.Domain.Entities.Movements
+namespace MyAwardProgram.Domain.Aggregates.Movements
 {
     public class Movement : Entity<Movement>
     {

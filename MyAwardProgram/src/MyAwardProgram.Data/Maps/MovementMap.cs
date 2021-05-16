@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MyAwardProgram.Domain.Entities.Movements;
+using MyAwardProgram.Domain.Aggregates.Movements;
 
 namespace MyAwardProgram.Data.Maps
 {

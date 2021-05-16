@@ -1,10 +1,10 @@
-﻿using MyAwardProgram.Domain.Entities.Movements;
-using MyAwardProgram.Domain.Entities.Orders;
-using MyAwardProgram.Domain.Entities.Partners.Enums;
+﻿using MyAwardProgram.Domain.Aggregates.Movements;
+using MyAwardProgram.Domain.Aggregates.Orders;
+using MyAwardProgram.Domain.Aggregates.Partners.Enums;
 using MyAwardProgram.Shared.Entities;
 using System.Collections.Generic;
 
-namespace MyAwardProgram.Domain.Entities.Partners
+namespace MyAwardProgram.Domain.Aggregates.Partners
 {
     public class Product : Entity<Product>
     {

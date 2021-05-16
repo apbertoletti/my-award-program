@@ -1,9 +1,9 @@
-﻿using MyAwardProgram.Domain.Entities.Users.DTOs.Requests;
-using MyAwardProgram.Domain.Entities.Users.DTOs.Responses;
+﻿using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
+using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 using MyAwardProgram.Domain.Interfaces.Repositories;
 using MyAwardProgram.Domain.Interfaces.Services;
 
-namespace MyAwardProgram.Domain.Entities.Users.Services
+namespace MyAwardProgram.Domain.Aggregates.Users.Services
 {
     public class UserService : IUserService
     {

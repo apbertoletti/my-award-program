@@ -1,11 +1,11 @@
-﻿using MyAwardProgram.Domain.Entities.Users.Enums;
+﻿using MyAwardProgram.Domain.Aggregates.Users.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyAwardProgram.Domain.Entities.Users.DTOs.Responses
+namespace MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses
 {
     public class LoginResponse
     {

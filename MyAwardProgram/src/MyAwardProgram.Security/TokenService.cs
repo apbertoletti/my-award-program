@@ -1,4 +1,4 @@
-﻿using MyAwardProgram.Domain.Entities.Users.DTOs.Requests;
+﻿using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Interfaces.Services;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
-using MyAwardProgram.Domain.Entities.Users;
+using MyAwardProgram.Domain.Aggregates.Users;
 
 namespace MyAwardProgram.Security
 {

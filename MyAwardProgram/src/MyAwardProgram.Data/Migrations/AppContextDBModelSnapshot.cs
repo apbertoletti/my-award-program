@@ -17,7 +17,7 @@ namespace MyAwardProgram.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.6");
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Movements.Movement", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Movements.Movement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_Movement");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.Order", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Orders.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_Order");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.OrderProduct", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Orders.OrderProduct", b =>
                 {
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -99,7 +99,7 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_OrderProduct");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Partner", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Partners.Partner", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +120,7 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_Partner");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Product", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Partners.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -152,7 +152,7 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_PartnerProduct");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Users.Address", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Users.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -201,7 +201,7 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_UserAddress");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Users.User", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Users.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,17 +239,17 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_User");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Movements.Movement", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Movements.Movement", b =>
                 {
-                    b.HasOne("MyAwardProgram.Domain.Entities.Orders.Order", "Order")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Orders.Order", "Order")
                         .WithMany("Movements")
                         .HasForeignKey("OrderId");
 
-                    b.HasOne("MyAwardProgram.Domain.Entities.Partners.Product", "Product")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Partners.Product", "Product")
                         .WithMany("Movements")
                         .HasForeignKey("ProductId");
 
-                    b.HasOne("MyAwardProgram.Domain.Entities.Users.User", "User")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Users.User", "User")
                         .WithMany("Movements")
                         .HasForeignKey("UserId");
 
@@ -260,13 +260,13 @@ namespace MyAwardProgram.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.Order", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Orders.Order", b =>
                 {
-                    b.HasOne("MyAwardProgram.Domain.Entities.Users.Address", "Address")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Users.Address", "Address")
                         .WithMany("Orders")
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("MyAwardProgram.Domain.Entities.Users.User", "User")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Users.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId");
 
@@ -275,15 +275,15 @@ namespace MyAwardProgram.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.OrderProduct", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Orders.OrderProduct", b =>
                 {
-                    b.HasOne("MyAwardProgram.Domain.Entities.Orders.Order", "Order")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Orders.Order", "Order")
                         .WithMany("OrderProducts")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyAwardProgram.Domain.Entities.Partners.Product", "Product")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Partners.Product", "Product")
                         .WithMany("OrderProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -294,49 +294,49 @@ namespace MyAwardProgram.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Product", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Partners.Product", b =>
                 {
-                    b.HasOne("MyAwardProgram.Domain.Entities.Partners.Partner", "Partner")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Partners.Partner", "Partner")
                         .WithMany("Products")
                         .HasForeignKey("PartnerId");
 
                     b.Navigation("Partner");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Users.Address", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Users.Address", b =>
                 {
-                    b.HasOne("MyAwardProgram.Domain.Entities.Users.User", "User")
+                    b.HasOne("MyAwardProgram.Domain.Aggregates.Users.User", "User")
                         .WithMany("Adresses")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.Order", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Orders.Order", b =>
                 {
                     b.Navigation("Movements");
 
                     b.Navigation("OrderProducts");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Partner", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Partners.Partner", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Product", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Partners.Product", b =>
                 {
                     b.Navigation("Movements");
 
                     b.Navigation("OrderProducts");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Users.Address", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Users.Address", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Users.User", b =>
+            modelBuilder.Entity("MyAwardProgram.Domain.Aggregates.Users.User", b =>
                 {
                     b.Navigation("Adresses");
 

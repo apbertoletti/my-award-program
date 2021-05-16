@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MyAwardProgram.Domain.Entities.Movements.Movement">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Movements.Movement">
     <Position X="5.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEDABAAAAACACAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Entities\Movements\Movement.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MyAwardProgram.Domain.Entities.Orders.Order">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Orders.Order">
     <Position X="2.75" Y="4" Width="1.5" />
-    <AssociationLine Name="Movements" Type="MyAwardProgram.Domain.Entities.Movements.Movement" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Movements" Type="MyAwardProgram.Domain.Aggregates.Movements.Movement" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="4.25" Y="4.42" />
         <Point X="4.625" Y="4.42" />
@@ -26,7 +26,7 @@
       <Property Name="OrderProducts" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MyAwardProgram.Domain.Entities.Partners.Partner">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Partners.Partner">
     <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAQ=</HashCode>
@@ -36,7 +36,7 @@
       <Property Name="Products" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MyAwardProgram.Domain.Entities.Partners.Product">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Partners.Product">
     <Position X="9.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAECAAABAAAAAAAABAAAIAQAAAAAAAAAAAAAEAAAAAg=</HashCode>
@@ -47,7 +47,7 @@
       <Property Name="OrderProducts" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MyAwardProgram.Domain.Entities.Users.User">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Users.User">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAACAAAAAABAAAAASAAAAAAAACAAIAIAAAAAA=</HashCode>
@@ -58,7 +58,7 @@
       <Property Name="Orders" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MyAwardProgram.Domain.Entities.Users.Address">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Users.Address">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEBAAAAAAAgAAAIAAAAAAQAAAIAAAABAQAABAAAAAA=</HashCode>
@@ -68,7 +68,7 @@
       <Property Name="Orders" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MyAwardProgram.Domain.Entities.Orders.OrderProduct">
+  <Class Name="MyAwardProgram.Domain.Aggregates.Orders.OrderProduct">
     <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>

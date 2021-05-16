@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyAwardProgram.Domain.Entities.Movements;
-using MyAwardProgram.Domain.Entities.Orders;
-using MyAwardProgram.Domain.Entities.Partners;
-using MyAwardProgram.Domain.Entities.Users;
+using MyAwardProgram.Domain.Aggregates.Movements;
+using MyAwardProgram.Domain.Aggregates.Orders;
+using MyAwardProgram.Domain.Aggregates.Partners;
+using MyAwardProgram.Domain.Aggregates.Users;
 
 namespace MyAwardProgram.Data.Contexts
 {

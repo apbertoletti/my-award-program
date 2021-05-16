@@ -1,9 +1,9 @@
-﻿using MyAwardProgram.Domain.Entities.Orders;
-using MyAwardProgram.Domain.Entities.Users.Enums;
+﻿using MyAwardProgram.Domain.Aggregates.Orders;
+using MyAwardProgram.Domain.Aggregates.Users.Enums;
 using MyAwardProgram.Shared.Entities;
 using System.Collections.Generic;
 
-namespace MyAwardProgram.Domain.Entities.Users
+namespace MyAwardProgram.Domain.Aggregates.Users
 {
     public class Address : Entity<Address>
     {

@@ -1,6 +1,6 @@
-﻿using MyAwardProgram.Domain.Entities.Users.Enums;
+﻿using MyAwardProgram.Domain.Aggregates.Users.Enums;
 
-namespace MyAwardProgram.Domain.Entities.Users.DTOs.Requests
+namespace MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests
 {
     public class LoginRequest
     {

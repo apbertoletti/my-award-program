@@ -1,4 +1,4 @@
-﻿using MyAwardProgram.Domain.Entities.Users;
+﻿using MyAwardProgram.Domain.Aggregates.Users;
 
 namespace MyAwardProgram.Domain.Interfaces.Repositories
 {

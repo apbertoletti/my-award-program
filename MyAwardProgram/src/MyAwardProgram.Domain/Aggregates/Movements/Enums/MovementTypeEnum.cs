@@ -1,4 +1,4 @@
-﻿namespace MyAwardProgram.Domain.Entities.Movements.Enums
+﻿namespace MyAwardProgram.Domain.Aggregates.Movements.Enums
 {
     public enum MovementTypeEnum
     {

@@ -1,4 +1,4 @@
-﻿namespace MyAwardProgram.Domain.Entities.Partners.Enums
+﻿namespace MyAwardProgram.Domain.Aggregates.Partners.Enums
 {
     public enum ProductDotTypeEnum
     {

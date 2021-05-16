@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MyAwardProgram.Domain.Entities.Users.DTOs.Requests;
-using MyAwardProgram.Domain.Entities.Users.DTOs.Responses;
+using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
+using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 using MyAwardProgram.Domain.Interfaces.Services;
 using System.Threading.Tasks;
 
