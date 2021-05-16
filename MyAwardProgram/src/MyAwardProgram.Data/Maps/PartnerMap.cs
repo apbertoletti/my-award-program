@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MyAwardProgram.Domain.Aggregates.Partners;
+using MyAwardProgram.Domain.Aggregates.Partners.Entities;
 
 namespace MyAwardProgram.Data.Maps
 {

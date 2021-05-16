@@ -1,4 +1,4 @@
-﻿using MyAwardProgram.Domain.Aggregates.Users;
+﻿using MyAwardProgram.Domain.Aggregates.Users.Entities;
 
 namespace MyAwardProgram.Domain.Interfaces.Services
 {

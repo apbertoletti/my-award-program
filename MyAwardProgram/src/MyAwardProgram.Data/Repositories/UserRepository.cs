@@ -1,6 +1,6 @@
 ﻿using MyAwardProgram.Data.Contexts;
 using MyAwardProgram.Data.Repositories.Base;
-using MyAwardProgram.Domain.Aggregates.Users;
+using MyAwardProgram.Domain.Aggregates.Users.Entities;
 using MyAwardProgram.Domain.Interfaces.Repositories;
 
 namespace MyAwardProgram.Data.Repositories

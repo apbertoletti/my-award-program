@@ -1,11 +1,11 @@
-﻿using MyAwardProgram.Domain.Aggregates.Movements;
-using MyAwardProgram.Domain.Aggregates.Partners;
-using MyAwardProgram.Domain.Aggregates.Users;
+﻿using MyAwardProgram.Domain.Aggregates.Movements.Entities;
+using MyAwardProgram.Domain.Aggregates.Partners.Entities;
+using MyAwardProgram.Domain.Aggregates.Users.Entities;
 using MyAwardProgram.Shared.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace MyAwardProgram.Domain.Aggregates.Orders
+namespace MyAwardProgram.Domain.Aggregates.Orders.Entities
 {
     public class Order : Entity<Order>
     {

@@ -1,7 +1,8 @@
-﻿using MyAwardProgram.Shared.Entities;
+﻿using MyAwardProgram.Domain.Aggregates.Partners.Entities;
+using MyAwardProgram.Shared.Entities;
 using System.Collections.Generic;
 
-namespace MyAwardProgram.Domain.Aggregates.Partners
+namespace MyAwardProgram.Domain.Aggregates.Partners.Entities
 {
     public class Partner : Entity<Partner>
     {

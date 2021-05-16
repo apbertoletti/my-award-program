@@ -1,10 +1,12 @@
 ﻿using MyAwardProgram.Domain.Aggregates.Movements;
+using MyAwardProgram.Domain.Aggregates.Movements.Entities;
 using MyAwardProgram.Domain.Aggregates.Orders;
+using MyAwardProgram.Domain.Aggregates.Orders.Entities;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
 using MyAwardProgram.Shared.Entities;
 using System.Collections.Generic;
 
-namespace MyAwardProgram.Domain.Aggregates.Users
+namespace MyAwardProgram.Domain.Aggregates.Users.Entities
 {
     public class User : Entity<User>
     {

@@ -1,6 +1,6 @@
-﻿using MyAwardProgram.Domain.Aggregates.Partners;
+﻿using MyAwardProgram.Domain.Aggregates.Partners.Entities;
 
-namespace MyAwardProgram.Domain.Aggregates.Orders
+namespace MyAwardProgram.Domain.Aggregates.Orders.Entities
 {
     public class OrderProduct 
     {
