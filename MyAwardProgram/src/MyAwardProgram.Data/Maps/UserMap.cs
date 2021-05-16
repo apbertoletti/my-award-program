@@ -8,7 +8,27 @@ namespace MyAwardProgram.Data.Maps
     {
         public void Configure(EntityTypeBuilder<User> entity)
         {
-            entity.ToTable("TB_User");
+            entity
+                .ToTable("TB_User");
+
+            entity.Property(p => p.CPF)
+                .HasMaxLength(11)
+                .IsRequired();
+
+            entity.Property(p => p.Name)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            entity.Property(p => p.Email)
+                .HasMaxLength(100)
+                .IsRequired();
+
+            entity.Property(p => p.Phone)
+                .HasMaxLength(20);
+
+            entity.Property(p => p.Password)
+                .HasMaxLength(25)
+                .IsRequired();
         }
     }
 }

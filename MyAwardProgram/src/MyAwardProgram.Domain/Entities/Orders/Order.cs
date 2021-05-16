@@ -16,5 +16,6 @@ namespace MyAwardProgram.Domain.Entities.Orders
 
         public ICollection<Movement> Movements { get; set; }
         public ICollection<Product> Products { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

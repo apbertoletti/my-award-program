@@ -16,6 +16,8 @@ namespace MyAwardProgram.Domain.Entities.Partners
         public Partner Partner { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
+
         public ICollection<Movement> Movements { get; set; }
     }
 }

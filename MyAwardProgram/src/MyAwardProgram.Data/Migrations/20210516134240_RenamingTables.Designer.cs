@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyAwardProgram.Data.Contexts;
 
 namespace MyAwardProgram.Data.Migrations
 {
     [DbContext(typeof(AppContextDB))]
-    partial class AppContextDBModelSnapshot : ModelSnapshot
+    [Migration("20210516134240_RenamingTables")]
+    partial class RenamingTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,26 +81,6 @@ namespace MyAwardProgram.Data.Migrations
                     b.ToTable("TB_Order");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.OrderProduct", b =>
-                {
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
-
-                    b.HasKey("OrderId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("TB_OrderProduct");
-                });
-
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Partner", b =>
                 {
                     b.Property<int>("Id")
@@ -106,14 +88,10 @@ namespace MyAwardProgram.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CNPJ")
-                        .IsRequired()
-                        .HasMaxLength(14)
-                        .HasColumnType("varchar(14)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -133,17 +111,13 @@ namespace MyAwardProgram.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<int?>("PartnerId")
                         .HasColumnType("int");
 
                     b.Property<string>("SKU")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("varchar(16)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -159,29 +133,19 @@ namespace MyAwardProgram.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("varchar(60)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("State")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("varchar(2)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -190,9 +154,7 @@ namespace MyAwardProgram.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -208,32 +170,38 @@ namespace MyAwardProgram.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("varchar(11)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("varchar(25)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.ToTable("TB_User");
+                });
+
+            modelBuilder.Entity("OrderProduct", b =>
+                {
+                    b.Property<int>("OrdersId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrdersId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Movements.Movement", b =>
@@ -272,25 +240,6 @@ namespace MyAwardProgram.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.OrderProduct", b =>
-                {
-                    b.HasOne("MyAwardProgram.Domain.Entities.Orders.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyAwardProgram.Domain.Entities.Partners.Product", "Product")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Product", b =>
                 {
                     b.HasOne("MyAwardProgram.Domain.Entities.Partners.Partner", "Partner")
@@ -309,11 +258,24 @@ namespace MyAwardProgram.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("OrderProduct", b =>
+                {
+                    b.HasOne("MyAwardProgram.Domain.Entities.Orders.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrdersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyAwardProgram.Domain.Entities.Partners.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Orders.Order", b =>
                 {
                     b.Navigation("Movements");
-
-                    b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Partner", b =>
@@ -324,8 +286,6 @@ namespace MyAwardProgram.Data.Migrations
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Partners.Product", b =>
                 {
                     b.Navigation("Movements");
-
-                    b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("MyAwardProgram.Domain.Entities.Users.Address", b =>

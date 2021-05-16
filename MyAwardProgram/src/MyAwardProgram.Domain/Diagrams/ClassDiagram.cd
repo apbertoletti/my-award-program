@@ -11,21 +11,19 @@
     <Position X="2.75" Y="4" Width="1.5" />
     <AssociationLine Name="Movements" Type="MyAwardProgram.Domain.Entities.Movements.Movement" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="4.25" Y="4.375" />
-        <Point X="4.625" Y="4.375" />
+        <Point X="4.25" Y="4.42" />
+        <Point X="4.625" Y="4.42" />
         <Point X="4.625" Y="3.875" />
         <Point X="5.75" Y="3.875" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAACAAAABAAAAAAAAAAAAAACAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAABAAABAAACAAAABAAAAAAAAAAAAAACAAAAAAAAAAQ=</HashCode>
       <FileName>Entities\Orders\Order.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Products" />
-    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Movements" />
+      <Property Name="OrderProducts" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MyAwardProgram.Domain.Entities.Partners.Partner">
@@ -41,14 +39,12 @@
   <Class Name="MyAwardProgram.Domain.Entities.Partners.Product">
     <Position X="9.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAECAAAAAAAAAAAABAAAIAQAAAAAAAAAAAAAEAAAAAg=</HashCode>
+      <HashCode>AAECAAABAAAAAAAABAAAIAQAAAAAAAAAAAAAEAAAAAg=</HashCode>
       <FileName>Entities\Partners\Product.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Orders" />
-    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Movements" />
+      <Property Name="OrderProducts" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MyAwardProgram.Domain.Entities.Users.User">
@@ -72,9 +68,12 @@
       <Property Name="Orders" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Interface Name="System.Collections.Generic.ICollection&lt;T&gt;" Collapsed="true">
-    <Position X="5.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
+  <Class Name="MyAwardProgram.Domain.Entities.Orders.OrderProduct">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entities\Orders\OrderProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
