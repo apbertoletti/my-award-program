@@ -1,4 +1,4 @@
-﻿namespace MyAwardProgram.Domain.Enums
+﻿namespace MyAwardProgram.Domain.Entities.Users.Enums
 {
     public enum AddressTypeEnum
     {

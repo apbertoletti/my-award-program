@@ -1,7 +1,7 @@
-﻿using MyAwardProgram.Domain.Entities.Orders;
+﻿using MyAwardProgram.Domain.Entities.Movements.Enums;
+using MyAwardProgram.Domain.Entities.Orders;
 using MyAwardProgram.Domain.Entities.Partners;
 using MyAwardProgram.Domain.Entities.Users;
-using MyAwardProgram.Domain.Enums;
 using MyAwardProgram.Shared.Entities;
 using System;
 

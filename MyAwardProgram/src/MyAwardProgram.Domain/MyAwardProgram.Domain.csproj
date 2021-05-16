@@ -9,7 +9,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <Folder Include="DTOs\Requests\" />
+    <Folder Include="Entities\Movements\DTOs\Responses\" />
+    <Folder Include="Entities\Movements\DTOs\Requests\" />
+    <Folder Include="Entities\Movements\Services\" />
+    <Folder Include="Entities\Orders\DTOs\Requests\" />
+    <Folder Include="Entities\Orders\DTOs\Responses\" />
+    <Folder Include="Entities\Orders\Enums\" />
+    <Folder Include="Entities\Orders\Services\" />
+    <Folder Include="Entities\Partners\DTOs\Requests\" />
+    <Folder Include="Entities\Partners\DTOs\Responses\" />
+    <Folder Include="Entities\Partners\Services\" />
+    <Folder Include="Entities\Users\DTOs\Responses\" />
+    <Folder Include="Entities\Users\Services\" />
   </ItemGroup>
 
 </Project>

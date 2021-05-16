@@ -1,5 +1,5 @@
 ﻿using MyAwardProgram.Domain.Entities.Orders;
-using MyAwardProgram.Domain.Enums;
+using MyAwardProgram.Domain.Entities.Users.Enums;
 using MyAwardProgram.Shared.Entities;
 using System.Collections.Generic;
 
