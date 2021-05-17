@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -25,7 +26,13 @@ namespace MyAwardProgram.IntegrationTests.Setups
                 {
                     builder.ConfigureServices(services =>
                     {
-                        services.RemoveAll(typeof(AppContextDB));
+                        var descriptor = services.SingleOrDefault(
+                            d => d.ServiceType ==
+                                typeof(DbContextOptions<AppContextDB>));
+
+                        if (descriptor != null)
+                            services.Remove(descriptor);
+
                         services.AddDbContext<AppContextDB>(options => { options.UseInMemoryDatabase("TestDb"); });
                     });
                 });
