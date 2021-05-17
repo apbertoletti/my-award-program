@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MyAwardProgram.Api.Controllers.V1
 {
     [ApiController]
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
         private IUserService _userService;
 
@@ -20,7 +20,7 @@ namespace MyAwardProgram.Api.Controllers.V1
 
         [HttpPost(ApiRoutes.User.Login)]
         [AllowAnonymous]
-        public async Task<ActionResult<LoginResponse>> Authenticate([FromBody]LoginRequest loginRequest)
+        public async Task<ActionResult<LoginResponse>> Authenticate([FromBody] LoginRequest loginRequest)
         {
             var response = _userService.LoginUser(loginRequest);
 
@@ -28,6 +28,18 @@ namespace MyAwardProgram.Api.Controllers.V1
                 return Unauthorized(response);
 
             return Ok(response);
+        }
+
+        [HttpPost(ApiRoutes.User.Register)]
+        [AllowAnonymous]
+        public async Task<ActionResult<NewUserResponse>> Register([FromBody] NewUserRequest newUserRequest)
+        {
+            var response = _userService.RegisterUser(newUserRequest);
+
+            if (response == null)
+                return BadRequest(response);
+
+            return Created(ApiRoutes.User.BaseRoute + "/" + response.Id, response);
         }
     }
 }

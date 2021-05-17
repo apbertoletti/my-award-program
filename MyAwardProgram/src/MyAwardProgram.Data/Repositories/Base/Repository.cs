@@ -20,9 +20,9 @@ namespace MyAwardProgram.Data.Repositories.Base
             DbSet = Db.Set<TEntity>();
         }
 
-        public virtual void Add(TEntity obj)
+        public virtual TEntity Add(TEntity obj)
         {
-            DbSet.Add(obj);
+            return DbSet.Add(obj).Entity;
         }
 
         public virtual void Update(TEntity obj)

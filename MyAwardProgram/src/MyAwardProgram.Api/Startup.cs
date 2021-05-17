@@ -43,7 +43,7 @@ namespace MyAwardProgram.Api
 
             //Console.WriteLine(dbConnectionString);
 
-            services.AddDbContextPool<AppContextDB>(options =>
+            services.AddDbContext<AppContextDB>(options =>
                 options.UseMySql(dbConnectionString,
                     ServerVersion.AutoDetect(dbConnectionString)));
 
@@ -97,14 +97,18 @@ namespace MyAwardProgram.Api
             var seconds = 60;
             var minutes = 20;
             var commandTimeout = seconds * minutes;
+            var databaseIntegrationTests = "Microsoft.EntityFrameworkCore.InMemory";
 
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetService<AppContextDB>())
                 {
-                    context.Database.SetCommandTimeout(commandTimeout);
-                    context.Database.Migrate();
-                    context.Database.SetCommandTimeout(null);
+                    if (context.Database.ProviderName != databaseIntegrationTests)
+                    {
+                        context.Database.SetCommandTimeout(commandTimeout);
+                        context.Database.Migrate();
+                        context.Database.SetCommandTimeout(null);
+                    }
                 }
             }
         }

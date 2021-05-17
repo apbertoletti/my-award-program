@@ -2,8 +2,10 @@
 using MyAwardProgram.Api.Contracts.V1;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
+using MyAwardProgram.Domain.Aggregates.Users.Entities;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
 using MyAwardProgram.IntegrationTests.Setups;
+using MyAwardProgram.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ namespace MyAwardProgram.IntegrationTests.Controllers
 {
     public class UserControllerTests : IntegrationTest
     {
+        #region Login Tests
+
         [Fact]
         public async void Login_WithValidCredentials_ReturnoOkResponse()
         {
@@ -55,5 +59,37 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             var loginResponse = await response.Content.ReadAsStringAsync();
             loginResponse.Should().BeEmpty();
         }
+
+        #endregion
+
+        #region Create User tests
+
+        [Fact]
+        public async void Create_NewUser_ReturnCreatedResponse()
+        {
+            //Arrange
+            var newUser = new NewUserRequest
+            {
+                CPF = "27078924599",
+                Name = "Novo usuário incluido",
+                Email = "novo@usuario.com",
+                Password = "newPass$11",
+                Role = UserRoleEnum.Consumer
+            };
+
+            //Act
+            var response = await TestClient.PostAsJsonAsync(ApiRoutes.User.Register, newUser);
+
+            //Assert
+            response.StatusCode.Should().Be(HttpStatusCode.Created);
+            var returnedUser = await response.Content.ReadFromJsonAsync<NewUserResponse>();
+            returnedUser.Id.Should().BeGreaterThan(0);
+            returnedUser.CPF.Should().Be(newUser.CPF);
+            returnedUser.Name.Should().Be(newUser.Name);
+            returnedUser.Email.Should().Be(newUser.Email);
+            returnedUser.Role.Should().Be(newUser.Role);
+        }
+
+        #endregion
     }
 }

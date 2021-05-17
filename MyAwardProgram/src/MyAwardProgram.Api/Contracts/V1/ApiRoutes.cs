@@ -2,17 +2,19 @@
 {
     public static class ApiRoutes
     {
-        public const string Root = "api";
+        public const string RootApi = "api";
 
-        public const string Version = "v1";
+        public const string VersionApi = "v1";
 
-        public const string Base = Root + "/" + Version;
+        public const string BaseApi = RootApi + "/" + VersionApi;
         
         public static class User
         {
-            public const string Login = Base + "/user/login";
+            public const string BaseRoute = BaseApi + "/user";
 
-            public const string Register = Base + "/user/register";
+            public const string Login = BaseRoute + "/login";
+
+            public const string Register = BaseRoute + "/register";
         }
     }
 }

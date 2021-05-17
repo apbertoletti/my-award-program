@@ -7,7 +7,7 @@ namespace MyAwardProgram.Domain.Interfaces.Repositories
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : Entity<TEntity>
     {
-        void Add(TEntity obj);
+        TEntity Add(TEntity obj);
         TEntity GetById(int id);
         IEnumerable<TEntity> GetAll();
         void Update(TEntity obj);

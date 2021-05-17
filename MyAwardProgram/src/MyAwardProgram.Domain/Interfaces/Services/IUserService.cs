@@ -6,5 +6,6 @@ namespace MyAwardProgram.Domain.Interfaces.Services
     public interface IUserService
     {
         LoginResponse LoginUser(LoginRequest loginRequest);
+        NewUserResponse RegisterUser(NewUserRequest newUserRequest);
     }
 }
