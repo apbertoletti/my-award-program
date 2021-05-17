@@ -24,6 +24,7 @@ services:
 
   myawardprogram.api:
     image: myawardprogramapi
+    restart: always
     build:
       context: .
       dockerfile: Api.Dockerfile
