@@ -44,6 +44,10 @@ namespace MyAwardProgram.Data.Maps
                 .Property(p => p.ZipCode)
                 .HasMaxLength(10)
                 .IsRequired();
+
+            entity
+                .Property(p => p.UserId)
+                .IsRequired();
         }    
     }
 }

@@ -12,6 +12,10 @@ using MyAwardProgram.Api.Contracts.V1;
 using MyAwardProgram.Data.Contexts;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
+using MyAwardProgram.Domain.Aggregates.Users.Enums;
+using Xunit;
+
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace MyAwardProgram.IntegrationTests.Setups
 {
@@ -40,18 +44,47 @@ namespace MyAwardProgram.IntegrationTests.Setups
             TestClient = appFactory.CreateClient();
         }
 
-        protected async Task AuthenticateAsync()
+        protected async Task AuthenticateAsync(UserRoleEnum userRole)
         {
-            TestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetValidJwtAsync());
+            var loginRequest = MountLoginRequest(userRole);
+            TestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetValidJwtAsync(loginRequest));
         }
 
-        private async Task<string> GetValidJwtAsync()
+        private LoginRequest MountLoginRequest(UserRoleEnum userRole)
         {
-            var response = await TestClient.PostAsJsonAsync(ApiRoutes.User.Login, new LoginRequest
+            var consumerDefault = new LoginRequest
             {
                 Email = "jose@empresa.com",
                 Password = "senha99*"
-            });
+            };
+
+            switch (userRole)
+            {
+                case UserRoleEnum.Consumer:
+                    return consumerDefault;
+
+                case UserRoleEnum.Partner:
+                    return new LoginRequest
+                    {
+                        Email = "malu@itau.com",
+                        Password = "pass55**"
+                    };
+
+                case UserRoleEnum.Admin:
+                    return new LoginRequest
+                    {
+                        Email = "humberto@dotz.com",
+                        Password = "Hub*dotz"
+                    };
+
+                default:
+                    return consumerDefault;
+            }
+        }
+
+        private async Task<string> GetValidJwtAsync(LoginRequest loginRequest)
+        {
+            var response = await TestClient.PostAsJsonAsync(ApiRoutes.User.Login, loginRequest);
 
             var registrationResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
             return registrationResponse.Token;

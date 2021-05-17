@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MyAwardProgram.Data.Contexts;
 using MyAwardProgram.Data.Repositories;
@@ -23,6 +25,7 @@ using MyAwardProgram.Shared.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Transactions;
 
 namespace MyAwardProgram.Api
@@ -47,6 +50,7 @@ namespace MyAwardProgram.Api
                 options.UseMySql(dbConnectionString,
                     ServerVersion.AutoDetect(dbConnectionString)));
 
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -54,6 +58,25 @@ namespace MyAwardProgram.Api
             });
 
             SetupIoC(services);
+
+            var key = Encoding.ASCII.GetBytes(JwtConfiguration.Key);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
         }
 
         private string GetConnectionString()
@@ -70,6 +93,11 @@ namespace MyAwardProgram.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -78,12 +106,15 @@ namespace MyAwardProgram.Api
             }
 
             UpdateDatabase(app);
-            SeedDatabase(app);
+            
+            if (env.IsDevelopment())
+                SeedDatabase(app);
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -115,12 +146,17 @@ namespace MyAwardProgram.Api
 
         private static void SeedDatabase(IApplicationBuilder app)
         {
+            var databaseIntegrationTests = "Microsoft.EntityFrameworkCore.InMemory";
+         
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetService<AppContextDB>())
                 {
                     using (var transaction = new TransactionScope())
                     {
+                        if (context.Database.ProviderName == databaseIntegrationTests)
+                            context.Database.EnsureDeleted();
+
                         context.Database.EnsureCreated();
 
                         SeedUser(context);
@@ -179,12 +215,14 @@ namespace MyAwardProgram.Api
                 var product3 = context.Products.FirstOrDefault(c => c.Id == 3);
                 var product4 = context.Products.FirstOrDefault(c => c.Id == 4);
 
+                var t = context.OrderProducts.Count();
+
                 context.OrderProducts.AddRange(new OrderProduct[]
                 {
-                    new OrderProduct { Order = order1, Product = product2, Quantity = 1 },
-                    new OrderProduct { Order = order1, Product = product3, Quantity = 2 },
-                    new OrderProduct { Order = order1, Product = product4, Quantity = 1 },
-                    new OrderProduct { Order = order2, Product = product2, Quantity = 3 },
+                    new OrderProduct { OrderId = order1.Id, ProductId = product2.Id, Quantity = 1 },
+                    new OrderProduct { OrderId = order1.Id, ProductId = product3.Id, Quantity = 2 },
+                    new OrderProduct { OrderId = order1.Id, ProductId = product4.Id, Quantity = 1 },
+                    new OrderProduct { OrderId = order2.Id, ProductId = product2.Id, Quantity = 3 },
                 });
              
                 context.SaveChanges();
@@ -289,12 +327,14 @@ namespace MyAwardProgram.Api
         protected virtual void SetupIoC(IServiceCollection services)
         {
             // Domain - Services 
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAddressService, AddressService>();
 
             // Infra - Data
-            services.AddScoped<AppContextDB>();
+            services.AddTransient<AppContextDB>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
 
             //Common - Helpers
             services.AddScoped<ICryptoHelper, CryptoHelper>();

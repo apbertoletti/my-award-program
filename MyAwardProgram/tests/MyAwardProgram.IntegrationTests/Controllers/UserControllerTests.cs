@@ -2,17 +2,10 @@
 using MyAwardProgram.Api.Contracts.V1;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
-using MyAwardProgram.Domain.Aggregates.Users.Entities;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
 using MyAwardProgram.IntegrationTests.Setups;
-using MyAwardProgram.Shared.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace MyAwardProgram.IntegrationTests.Controllers
@@ -42,7 +35,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async void Login_WithInvalidCredentials_ReturnoUnauthorizedResponse()
+        public async void Login_WithInvalidCredentials_ReturnNotFoundResponse()
         {
             //Arrange
             var loginRequest = new LoginRequest
@@ -55,7 +48,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             var response = await TestClient.PostAsJsonAsync(ApiRoutes.User.Login, loginRequest);
 
             //Assert
-            response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
             var loginResponse = await response.Content.ReadAsStringAsync();
             loginResponse.Should().BeEmpty();
         }

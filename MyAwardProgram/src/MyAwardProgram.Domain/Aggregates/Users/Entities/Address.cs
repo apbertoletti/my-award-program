@@ -16,6 +16,7 @@ namespace MyAwardProgram.Domain.Aggregates.Users.Entities
         public string Country { get; set; }
         public string ZipCode { get; set; }
 
+        public int UserId { get; set; }
         public User User { get; set; }
 
         public ICollection<Order> Orders { get; set; }

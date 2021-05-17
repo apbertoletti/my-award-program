@@ -10,12 +10,10 @@ namespace MyAwardProgram.Security
 {
     public class TokenService : ITokenService
     {
-        private string JwtKey = "QKfUKL4HjOsGq0)xj2gEHnyYXhB1@|";
-
         public string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(JwtKey);
+            var key = Encoding.ASCII.GetBytes(JwtConfiguration.Key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]

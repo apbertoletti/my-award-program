@@ -16,5 +16,12 @@
 
             public const string Register = BaseRoute + "/register";
         }
+
+        public static class Address
+        {
+            public const string BaseRoute = BaseApi + "/address";
+
+            public const string Register = BaseRoute + "/register";
+        }
     }
 }
