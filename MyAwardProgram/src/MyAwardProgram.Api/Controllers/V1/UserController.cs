@@ -25,7 +25,7 @@ namespace MyAwardProgram.Api.Controllers.V1
             var response = _userService.LoginUser(loginRequest);
 
             if (response == null)
-                return Unauthorized();
+                return Unauthorized(response);
 
             return Ok(response);
         }
