@@ -70,7 +70,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             //Arrange
             var newUser = new NewUserRequest
             {
-                CPF = "27078924599",
+                CPF = "49779200070",
                 Name = "Novo usuário incluido",
                 Email = "novo@usuario.com",
                 Password = "newPass$11",

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyAwardProgram.Domain.Aggregates.Users.Entities;
+using MyAwardProgram.Shared.Types;
 
 namespace MyAwardProgram.Data.Maps
 {
@@ -11,9 +12,13 @@ namespace MyAwardProgram.Data.Maps
             entity
                 .ToTable("TB_User");
 
-            entity.Property(p => p.CPF)
-                .HasMaxLength(11)
-                .IsRequired();
+            entity.OwnsOne(x => x.CPF, x =>
+            {
+                x.Property(s => s.Value)
+                    .HasColumnName("CPF")
+                    .HasMaxLength(11)
+                    .IsRequired();
+            });
 
             entity.Property(p => p.Name)
                 .HasMaxLength(50)

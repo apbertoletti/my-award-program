@@ -1,16 +1,15 @@
-﻿using MyAwardProgram.Domain.Aggregates.Movements;
-using MyAwardProgram.Domain.Aggregates.Movements.Entities;
-using MyAwardProgram.Domain.Aggregates.Orders;
+﻿using MyAwardProgram.Domain.Aggregates.Movements.Entities;
 using MyAwardProgram.Domain.Aggregates.Orders.Entities;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
 using MyAwardProgram.Shared.Entities;
+using MyAwardProgram.Shared.Types;
 using System.Collections.Generic;
 
 namespace MyAwardProgram.Domain.Aggregates.Users.Entities
 {
     public class User : Entity<User>
     {
-        public string CPF { get; set; }
+        public CPF CPF { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }

@@ -276,10 +276,10 @@ namespace MyAwardProgram.Api
                 var crypoHelper = new CryptoHelper();
                 context.Users.AddRange(new User[]
                 {
-                    new User { CPF = "12345678901", Name = "José da Silva", Email = "jose@empresa.com", Password = crypoHelper.GenerateHash("senha99*"), Role = UserRoleEnum.Consumer },
-                    new User { CPF = "78945612342", Name = "Carolina Alberta Nunes", Email = "carol@dominio.com", Password = crypoHelper.GenerateHash("88pass*"), Role = UserRoleEnum.Consumer},
-                    new User { CPF = "35524234445", Name = "Maria Luiza Cartoz", Email = "malu@itau.com", Password = crypoHelper.GenerateHash("pass55**"), Role = UserRoleEnum.Partner },
-                    new User { CPF = "98445342234", Name = "Humberto Gartner", Email = "humberto@dotz.com", Password = crypoHelper.GenerateHash("Hub*dotz"), Role = UserRoleEnum.Admin },
+                    new User { CPF = "99388926048", Name = "José da Silva", Email = "jose@empresa.com", Password = crypoHelper.GenerateHash("senha99*"), Role = UserRoleEnum.Consumer },
+                    new User { CPF = "61991251009", Name = "Carolina Alberta Nunes", Email = "carol@dominio.com", Password = crypoHelper.GenerateHash("88pass*"), Role = UserRoleEnum.Consumer},
+                    new User { CPF = "50651670012", Name = "Maria Luiza Cartoz", Email = "malu@itau.com", Password = crypoHelper.GenerateHash("pass55**"), Role = UserRoleEnum.Partner },
+                    new User { CPF = "23272283013", Name = "Humberto Gartner", Email = "humberto@dotz.com", Password = crypoHelper.GenerateHash("Hub*dotz"), Role = UserRoleEnum.Admin },
                 });
 
                 context.SaveChanges();

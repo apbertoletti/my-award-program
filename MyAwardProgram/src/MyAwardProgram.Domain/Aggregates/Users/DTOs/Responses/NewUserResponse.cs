@@ -1,4 +1,5 @@
 ﻿using MyAwardProgram.Domain.Aggregates.Users.Enums;
+using MyAwardProgram.Shared.Types;
 
 namespace MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses
 {

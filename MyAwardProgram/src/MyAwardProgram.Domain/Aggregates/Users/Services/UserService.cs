@@ -60,7 +60,7 @@ namespace MyAwardProgram.Domain.Aggregates.Users.Services
             return new NewUserResponse
             {
                 Id = addedUser.Id,
-                CPF = addedUser.CPF,
+                CPF = addedUser.CPF.ToString(),
                 Name = addedUser.Name,
                 Email = addedUser.Email,
                 Phone = addedUser.Phone,
