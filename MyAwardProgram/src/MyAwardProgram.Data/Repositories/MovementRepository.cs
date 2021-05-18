@@ -16,6 +16,13 @@ namespace MyAwardProgram.Data.Repositories
         {
         }
 
+        public long GetBalance(int userId)
+        {
+            return DbSet
+                    .Where(m => m.UserId == userId)
+                    .Sum(m => m.Dots);
+        }
+
         public List<Movement> GetExtract(int userId, DateTime startDate, DateTime endDate, MovementTypeEnum? movementType)
         {
             var query = DbSet

@@ -12,15 +12,18 @@ namespace MyAwardProgram.Domain.Aggregates.Users.Services
         private IUserRepository _userRepository;
         private ITokenService _tokenService;
         private ICryptoHelper _crypoHelper;
+        private IMovementRepository _movementRepository;
 
         public UserService(
             IUserRepository userRepository,
             ITokenService tokenService,
-            ICryptoHelper crypoHelper)
+            ICryptoHelper crypoHelper,
+            IMovementRepository movementeRepository)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
             _crypoHelper = crypoHelper;
+            _movementRepository = movementeRepository;
         }
 
         public LoginResponse LoginUser(LoginRequest loginRequest)
@@ -33,10 +36,13 @@ namespace MyAwardProgram.Domain.Aggregates.Users.Services
                 return null;
 
             var token = _tokenService.GenerateToken(user);
+            var balance = _movementRepository.GetBalance(user.Id);
 
             return new LoginResponse
             {
+                UserId = user.Id,
                 UserEmail = user.Email,
+                DotsBalance = balance,
                 UserRole = user.Role,
                 Token = token
             };

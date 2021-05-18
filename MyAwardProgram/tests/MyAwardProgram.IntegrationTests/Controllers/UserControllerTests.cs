@@ -30,8 +30,10 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             //Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+            loginResponse.UserId.Should().Be(1);
             loginResponse.UserRole.Should().Be(UserRoleEnum.Consumer);
             loginResponse.Token.Should().NotBeNull();
+            loginResponse.DotsBalance.Should().Be(8500);
         }
 
         [Fact]
