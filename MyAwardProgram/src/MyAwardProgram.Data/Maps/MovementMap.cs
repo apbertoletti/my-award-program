@@ -24,8 +24,7 @@ namespace MyAwardProgram.Data.Maps
                 .IsRequired();
 
             entity
-                .Property(p => p.DueDate)
-                .IsRequired();
+                .Property(p => p.DueDate);
 
             entity
                 .Property(p => p.UserId)

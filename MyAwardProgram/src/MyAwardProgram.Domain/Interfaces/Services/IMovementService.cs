@@ -1,11 +1,13 @@
 ﻿using MyAwardProgram.Domain.Aggregates.Movements.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Movements.DTOs.Responses;
+using MyAwardProgram.Domain.Aggregates.Movements.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace MyAwardProgram.Domain.Interfaces.Services
 {
     public interface IMovementService
     {
-        ExtractResponse GetExtract(ExtractRequest extractRequest);
+        List<ExtractResponse> GetExtract(int userId, DateTime startDate, DateTime endDate, MovementTypeEnum? movementType);
     }
 }

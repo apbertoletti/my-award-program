@@ -1,9 +1,9 @@
-﻿using MyAwardProgram.Domain.Aggregates.Movements.DTOs.Requests;
-using MyAwardProgram.Domain.Aggregates.Movements.DTOs.Responses;
+﻿using MyAwardProgram.Domain.Aggregates.Movements.DTOs.Responses;
+using MyAwardProgram.Domain.Aggregates.Movements.Enums;
 using MyAwardProgram.Domain.Interfaces.Repositories;
 using MyAwardProgram.Domain.Interfaces.Services;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace MyAwardProgram.Domain.Aggregates.Movements.Services
 {
@@ -16,18 +16,29 @@ namespace MyAwardProgram.Domain.Aggregates.Movements.Services
             _movementRepository = movementRepository;
         }
 
-        public ExtractResponse GetExtract(ExtractRequest extractRequest)
+        public List<ExtractResponse> GetExtract(int userId, DateTime startDate, DateTime endDate, MovementTypeEnum? movementType)
         {
-            var movements = _movementRepository.Where(m => 
-                m.UserId == extractRequest.UserId && 
-                m.Occurrence >= extractRequest.StartDate && 
-                m.Occurrence <= extractRequest.EndDate &&
-                m.Type == extractRequest.Type).ToList();
+            var movements = _movementRepository.GetExtract(
+                userId,
+                startDate,
+                endDate,
+                movementType);
 
-            return new ExtractResponse
+            var response = new List<ExtractResponse>();
+            movements.ForEach(m =>
             {
-                ExtractUser = movements
-            };
+                response.Add(new ExtractResponse
+                {
+                    Occurrence = m.Occurrence,
+                    Type = m.Type,
+                    Dots = m.Dots,
+                    DueDate = m.DueDate,
+                    Product = m.Product?.Name,
+                    Partner = m.Product?.Partner.Name
+                });
+            });
+
+            return response;
         }
     }
 }

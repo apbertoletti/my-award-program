@@ -28,7 +28,7 @@
         {
             public const string BaseRoute = BaseApi + "/movement";
 
-            public const string GetExtract = BaseRoute + "/extract";
+            public const string GetExtract = BaseRoute + "/extract"; ///{userId:int}/{startDate:dateTime}/{endDate:dateTime}/{movementType:int?}";
         }
     }
 }

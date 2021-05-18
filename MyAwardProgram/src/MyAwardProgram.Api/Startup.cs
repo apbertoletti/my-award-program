@@ -195,7 +195,7 @@ namespace MyAwardProgram.Api
                     new Movement { User = user1, Occurrence = new DateTime(2021, 2, 10), Product = product1, Dots = -76500, DueDate = new DateTime(2021, 4, 3), Type = MovementTypeEnum.Rescue },
                     new Movement { User = user2, Occurrence = new DateTime(2020, 10, 15), Product = product1, Dots = 10000, DueDate = new DateTime(2021, 1, 15), Type = MovementTypeEnum.Accumulation },
                     new Movement { User = user2, Occurrence = new DateTime(2020, 12, 26), Product = product1, Dots = 30000, DueDate = new DateTime(2021, 2, 26), Type = MovementTypeEnum.Accumulation },
-                    new Movement { User = user2, Occurrence = new DateTime(2021, 1, 15), Product = null, Dots = -10000, DueDate = new DateTime(2021, 1, 15), Type = MovementTypeEnum.Expired },
+                    new Movement { User = user2, Occurrence = new DateTime(2021, 1, 15), Product = null, Dots = -10000, DueDate = null, Type = MovementTypeEnum.Expired },
                     new Movement { User = user2, Occurrence = new DateTime(2020, 1, 30), Product = product1, Dots = 30000, DueDate = new DateTime(2021, 2, 26), Type = MovementTypeEnum.Accumulation },
                 });
              
@@ -258,18 +258,15 @@ namespace MyAwardProgram.Api
                 var partner2 = context.Partners.FirstOrDefault(u => u.Id == 2);
                 var partner3 = context.Partners.FirstOrDefault(u => u.Id == 2);
 
-                context.Products.AddRange(new Product[]
-                {
-                    new Product { Partner = partner1, SKU = "1324567895", Name = "Acumulo pontos", DotPrice = 1, DotType = ProductDotTypeEnum.Add },
-                    new Product { Partner = partner2, SKU = "78945656465", Name = "Panela de aço", DotPrice = 1500, DotType = ProductDotTypeEnum.Remove },
-                    new Product { Partner = partner2, SKU = "24312412333", Name = "Celular Moto G", DotPrice = 20000, DotType = ProductDotTypeEnum.Remove },
-                    new Product { Partner = partner2, SKU = "24552342432", Name = "Pneu Aro 20", DotPrice = 35000, DotType = ProductDotTypeEnum.Remove },
-                    new Product { Partner = partner3, SKU = "99848822344", Name = "Relogio de parede", DotPrice = 800, DotType = ProductDotTypeEnum.Remove },
-                    new Product { Partner = partner3, SKU = "62235244235", Name = "Roteador Wifi", DotPrice = 7500, DotType = ProductDotTypeEnum.Remove },
-                });
-
-                context.SaveChanges();
+                context.Products.Add(new Product { Partner = partner1, SKU = "1324567895", Name = "Acumulo pontos", DotPrice = 1, DotType = ProductDotTypeEnum.Add });
+                context.Products.Add(new Product { Partner = partner2, SKU = "78945656465", Name = "Panela de aço", DotPrice = 1500, DotType = ProductDotTypeEnum.Remove });
+                context.Products.Add(new Product { Partner = partner2, SKU = "24312412333", Name = "Celular Moto G", DotPrice = 20000, DotType = ProductDotTypeEnum.Remove });
+                context.Products.Add(new Product { Partner = partner2, SKU = "24552342432", Name = "Pneu Aro 20", DotPrice = 35000, DotType = ProductDotTypeEnum.Remove });
+                context.Products.Add(new Product { Partner = partner3, SKU = "99848822344", Name = "Relogio de parede", DotPrice = 800, DotType = ProductDotTypeEnum.Remove });
+                context.Products.Add(new Product { Partner = partner3, SKU = "62235244235", Name = "Roteador Wifi", DotPrice = 7500, DotType = ProductDotTypeEnum.Remove });
             }
+
+            context.SaveChanges();
         }
 
         private static void SeedPartners(AppContextDB context)

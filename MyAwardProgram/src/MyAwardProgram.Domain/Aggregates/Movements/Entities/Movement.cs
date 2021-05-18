@@ -12,7 +12,7 @@ namespace MyAwardProgram.Domain.Aggregates.Movements.Entities
         public DateTime Occurrence { get; set; }
         public MovementTypeEnum Type { get; set; }
         public int Dots { get; set; }
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
         public int UserId { get; set; }
 
         public User User { get; set; }
