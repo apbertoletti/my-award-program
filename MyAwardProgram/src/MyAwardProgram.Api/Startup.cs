@@ -11,6 +11,7 @@ using MyAwardProgram.Data.Contexts;
 using MyAwardProgram.Data.Repositories;
 using MyAwardProgram.Domain.Aggregates.Movements.Entities;
 using MyAwardProgram.Domain.Aggregates.Movements.Enums;
+using MyAwardProgram.Domain.Aggregates.Movements.Services;
 using MyAwardProgram.Domain.Aggregates.Orders.Entities;
 using MyAwardProgram.Domain.Aggregates.Partners.Entities;
 using MyAwardProgram.Domain.Aggregates.Partners.Enums;
@@ -178,8 +179,8 @@ namespace MyAwardProgram.Api
             if (!context.Movements.Any())
             {
                 var user1 = context.Users.FirstOrDefault(u => u.Id == 1);
-                var user2 = context.Users.FirstOrDefault(u => u.Id == 1);
-                var user3 = context.Users.FirstOrDefault(u => u.Id == 1);
+                var user2 = context.Users.FirstOrDefault(u => u.Id == 2);
+                var user3 = context.Users.FirstOrDefault(u => u.Id == 3);
 
                 var order1 = context.Orders.FirstOrDefault(c => c.Id == 1);
                 var order2 = context.Orders.FirstOrDefault(c => c.Id == 2);
@@ -191,10 +192,10 @@ namespace MyAwardProgram.Api
                 {
                     new Movement { User = user1, Occurrence = new DateTime(2021, 1, 2), Product = product1, Dots = 40000, DueDate = new DateTime(2021, 3, 2), Type = MovementTypeEnum.Accumulation },
                     new Movement { User = user1, Occurrence = new DateTime(2021, 2, 3), Product = product1, Dots = 45000, DueDate = new DateTime(2021, 4, 3), Type = MovementTypeEnum.Accumulation },
-                    new Movement { User = user1, Occurrence = new DateTime(2021, 2, 10), Product = product1, Dots = 76500, DueDate = new DateTime(2021, 4, 3), Type = MovementTypeEnum.Rescue },
+                    new Movement { User = user1, Occurrence = new DateTime(2021, 2, 10), Product = product1, Dots = -76500, DueDate = new DateTime(2021, 4, 3), Type = MovementTypeEnum.Rescue },
                     new Movement { User = user2, Occurrence = new DateTime(2020, 10, 15), Product = product1, Dots = 10000, DueDate = new DateTime(2021, 1, 15), Type = MovementTypeEnum.Accumulation },
                     new Movement { User = user2, Occurrence = new DateTime(2020, 12, 26), Product = product1, Dots = 30000, DueDate = new DateTime(2021, 2, 26), Type = MovementTypeEnum.Accumulation },
-                    new Movement { User = user2, Occurrence = new DateTime(2021, 1, 15), Product = null, Dots = 10000, DueDate = new DateTime(2021, 1, 15), Type = MovementTypeEnum.Expired },
+                    new Movement { User = user2, Occurrence = new DateTime(2021, 1, 15), Product = null, Dots = -10000, DueDate = new DateTime(2021, 1, 15), Type = MovementTypeEnum.Expired },
                     new Movement { User = user2, Occurrence = new DateTime(2020, 1, 30), Product = product1, Dots = 30000, DueDate = new DateTime(2021, 2, 26), Type = MovementTypeEnum.Accumulation },
                 });
              
@@ -330,11 +331,13 @@ namespace MyAwardProgram.Api
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IMovementService, MovementService>();
 
             // Infra - Data
             services.AddTransient<AppContextDB>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IMovementRepository, MovementRepository>();
 
             //Common - Helpers
             services.AddScoped<ICryptoHelper, CryptoHelper>();

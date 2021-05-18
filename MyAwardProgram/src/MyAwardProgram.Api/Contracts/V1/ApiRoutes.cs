@@ -23,5 +23,12 @@
 
             public const string Register = BaseRoute + "/register";
         }
+
+        public static class Movement
+        {
+            public const string BaseRoute = BaseApi + "/movement";
+
+            public const string GetExtract = BaseRoute + "/extract";
+        }
     }
 }

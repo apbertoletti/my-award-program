@@ -13,6 +13,7 @@ namespace MyAwardProgram.Domain.Aggregates.Movements.Entities
         public MovementTypeEnum Type { get; set; }
         public int Dots { get; set; }
         public DateTime DueDate { get; set; }
+        public int UserId { get; set; }
 
         public User User { get; set; }
         public Product Product { get; set; }
