@@ -33,8 +33,9 @@ namespace MyAwardProgram.IntegrationTests.Controllers
 
             var returnExtract = await response.Content.ReadFromJsonAsync<List<ExtractResponse>>();
             returnExtract.Should().NotBeEmpty()
-                .And.HaveCount(2)
-                .And.ContainItemsAssignableTo<ExtractResponse>();
+                .And.HaveCount(3)
+                .And.ContainItemsAssignableTo<ExtractResponse>()
+                .And.BeInAscendingOrder(c => c.Occurrence);
         }
 
         [Fact]
@@ -58,6 +59,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             returnExtract.Should().NotBeEmpty()
                 .And.HaveCount(2)
                 .And.ContainItemsAssignableTo<ExtractResponse>()
+                .And.BeInAscendingOrder(c => c.Occurrence)
                 .And.OnlyContain(c => c.Type == MovementTypeEnum.Accumulation);
         }
 
@@ -82,6 +84,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             returnExtract.Should().NotBeEmpty()
                 .And.HaveCount(1)
                 .And.ContainItemsAssignableTo<ExtractResponse>()
+                .And.BeInAscendingOrder(c => c.Occurrence)
                 .And.OnlyContain(c => c.Type == MovementTypeEnum.Expired);
         }
 
