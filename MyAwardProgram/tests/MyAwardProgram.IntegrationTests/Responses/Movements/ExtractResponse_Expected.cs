@@ -1,13 +1,16 @@
 ﻿using MyAwardProgram.Domain.Aggregates.Movements.Enums;
+using MyAwardProgram.Domain.Aggregates.Orders.Entities;
+using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace MyAwardProgram.Domain.Aggregates.Movements.DTOs.Responses
+namespace MyAwardProgram.IntegrationTests.Responses.Movements
 {
-    public class ExtractResponse
+    public class ExtractResponse_Expected
     {
         public DateTime Occurrence { get; set; }
-        
+
         public MovementTypeEnum Type { get; set; }
         
         public int Dots { get; set; }
