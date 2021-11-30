@@ -1,4 +1,4 @@
-# my-award-program
+# My Award Program
 REST Service for a simple award program
 
 ## Instructions for use
