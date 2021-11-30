@@ -1,16 +1,16 @@
 # my-award-program
 REST Service for a simple award program
 
-## Instruções de uso
+## Instructions for use
 
-1. Ter o [Docker](https://www.docker.com/) instalado e em execução na máquina.
+1. Have [Docker](https://www.docker.com/) installed and running on the machine.
 
-2. Clonar este repositório e navegar para a pasta raiz `.\my-award-program\MyAwardProgram\` onde estão os arquivos de `docker-compose.yml`
+2. Clone this repository and navigate to the root folder `.\my-award-program\MyAwardProgram\` where the `docker-compose.yml` files are located
 
-3. Subir os containers através do comando abaixo:
+3. Upload the containers using the command below:
 
 ~~~
 docker-compose up -d --build
 ~~~
 
-4. Acessar no navegador o Swagger da API na seguinte URL [http://localhost:44300/swagger](http://localhost:44300/swagger)
+4. Access the API Swagger in the browser at the following URL [http://localhost:44300/swagger](http://localhost:44300/swagger)
