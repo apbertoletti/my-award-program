@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using MyAwardProgram.Api;
 using MyAwardProgram.Api.Contracts.V1;
 using MyAwardProgram.Data.Contexts;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
-using Xunit;
 
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
-namespace MyAwardProgram.IntegrationTests.Setups
+namespace MyAwardProgram.IntegrationTests.NUnit.Setups
 {
     public class IntegrationTest
     {
@@ -48,6 +45,11 @@ namespace MyAwardProgram.IntegrationTests.Setups
         {
             var loginRequest = MountLoginRequest(userRole);
             TestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetValidJwtAsync(loginRequest));
+        }
+
+        protected async Task CleanAuthenticateAsync()
+        {
+            TestClient.DefaultRequestHeaders.Authorization = null;
         }
 
         private LoginRequest MountLoginRequest(UserRoleEnum userRole)
@@ -91,3 +93,4 @@ namespace MyAwardProgram.IntegrationTests.Setups
         }
     }
 }
+

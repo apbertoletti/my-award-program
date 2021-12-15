@@ -2,7 +2,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace MyAwardProgram.IntegrationTests.Responses.Movements
+namespace MyAwardProgram.IntegrationTests.XUnit.Responses.Movements
 {
     public class ExtractResponse_Expected
     {

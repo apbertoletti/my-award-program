@@ -3,19 +3,20 @@ using MyAwardProgram.Api.Contracts.V1;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
-using MyAwardProgram.IntegrationTests.Setups;
+using MyAwardProgram.IntegrationTests.NUnit.Setups;
+using NUnit.Framework;
 using System.Net;
 using System.Net.Http.Json;
-using Xunit;
+using System.Threading.Tasks;
 
-namespace MyAwardProgram.IntegrationTests.Controllers
+namespace MyAwardProgram.IntegrationTests.NUnit.Controllers
 {
     public class AddressControllerTests : IntegrationTest
     {
         #region Register New Aderesses
 
-        [Fact]
-        public async void Create_NewUserAddress_WithConsumerRole_ReturnCreatedResponse()
+        [Test]
+        public async Task Create_NewUserAddress_WithConsumerRole_ReturnCreatedResponse()
         {
             //Arrange
             await AuthenticateAsync(UserRoleEnum.Consumer);
@@ -48,8 +49,8 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             returnAdress.ZipCode.Should().Be(newAddress.ZipCode);
         }
 
-        [Fact]
-        public async void Create_NewUserAddress_WithAdminRole_ReturnCreatedResponse()
+        [Test]
+        public async Task Create_NewUserAddress_WithAdminRole_ReturnCreatedResponse()
         {
             //Arrange
             await AuthenticateAsync(UserRoleEnum.Admin);
@@ -82,8 +83,8 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             returnAdress.ZipCode.Should().Be(newAddress.ZipCode);
         }
 
-        [Fact]
-        public async void Create_NewUserAddress_WithPartnerRole_ReturnForbiden()
+        [Test]
+        public async Task Create_NewUserAddress_WithPartnerRole_ReturnForbiden()
         {
             //Arrange
             await AuthenticateAsync(UserRoleEnum.Partner);

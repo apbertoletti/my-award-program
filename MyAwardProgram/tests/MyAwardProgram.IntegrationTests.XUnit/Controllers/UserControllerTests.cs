@@ -3,12 +3,12 @@ using MyAwardProgram.Api.Contracts.V1;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Requests;
 using MyAwardProgram.Domain.Aggregates.Users.DTOs.Responses;
 using MyAwardProgram.Domain.Aggregates.Users.Enums;
-using MyAwardProgram.IntegrationTests.Setups;
+using MyAwardProgram.IntegrationTests.XUnit.Setups;
 using System.Net;
 using System.Net.Http.Json;
 using Xunit;
 
-namespace MyAwardProgram.IntegrationTests.Controllers
+namespace MyAwardProgram.IntegrationTests.XUnit.Controllers
 {
     public class UserControllerTests : IntegrationTest
     {
