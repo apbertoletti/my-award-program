@@ -18,5 +18,8 @@ namespace MyAwardProgram.Domain.Aggregates.Movements.DTOs.Responses
         public string Product { get; set; }
         
         public string Partner { get; set; }
+
+        [JsonPropertyName("new-prop")]
+        public int NovaPropriedade { get; set; }
     }
 }

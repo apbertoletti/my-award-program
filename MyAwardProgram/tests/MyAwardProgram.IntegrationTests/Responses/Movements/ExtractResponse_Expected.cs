@@ -1,8 +1,5 @@
 ﻿using MyAwardProgram.Domain.Aggregates.Movements.Enums;
-using MyAwardProgram.Domain.Aggregates.Orders.Entities;
-using Newtonsoft.Json.Converters;
 using System;
-using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace MyAwardProgram.IntegrationTests.Responses.Movements
@@ -21,5 +18,8 @@ namespace MyAwardProgram.IntegrationTests.Responses.Movements
         public string Product { get; set; }
         
         public string Partner { get; set; }
+
+        [JsonPropertyName("new-prop")]
+        public int NovaPropriedade { get; set; }
     }
 }

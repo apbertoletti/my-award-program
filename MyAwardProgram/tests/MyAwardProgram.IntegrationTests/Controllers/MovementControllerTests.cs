@@ -19,7 +19,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
     public class MovementControllerTests : IntegrationTest
     {
         [Fact]
-        public void Get_Extract_SchemaResponse()
+        public void Get_Extract_SchemaResponse_Compare()
         {
             //Arrange
             var expectedJsonSchema = JsonSchema.FromSampleJson(JsonSerializer.Serialize(AutoFaker.Generate<ExtractResponse_Expected>())).ToJson();
