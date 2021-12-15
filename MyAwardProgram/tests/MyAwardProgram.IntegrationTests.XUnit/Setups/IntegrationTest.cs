@@ -50,6 +50,11 @@ namespace MyAwardProgram.IntegrationTests.XUnit.Setups
             TestClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetValidJwtAsync(loginRequest));
         }
 
+        protected async Task CleanAuthenticateAsync()
+        {
+            TestClient.DefaultRequestHeaders.Authorization = null;
+        }
+
         private LoginRequest MountLoginRequest(UserRoleEnum userRole)
         {
             var consumerDefault = new LoginRequest

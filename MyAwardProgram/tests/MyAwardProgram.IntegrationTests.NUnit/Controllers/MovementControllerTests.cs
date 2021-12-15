@@ -127,6 +127,8 @@ namespace MyAwardProgram.IntegrationTests.NUnit.Controllers
         public async Task Get_Extract_WithoutToken_ReturnoUnauthorizedResponse()
         {
             //Arrange            
+            await CleanAuthenticateAsync();
+
             var userId = 2;
             var startDate = new DateTime(2020, 01, 01);
             var endDate = new DateTime(2021, 12, 01);
