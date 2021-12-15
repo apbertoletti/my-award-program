@@ -20,8 +20,8 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             //Arrange
             var loginRequest = new LoginRequest
             {
-                Email = "jose@empresa.com",
-                Password = "senha99*"
+                Email = "admin@myawardprogram.com",
+                Password = "NewPassAdmin"
             };
 
             //Act
@@ -31,7 +31,7 @@ namespace MyAwardProgram.IntegrationTests.Controllers
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
             loginResponse.UserId.Should().Be(1);
-            loginResponse.UserRole.Should().Be(UserRoleEnum.Consumer);
+            loginResponse.UserRole.Should().Be(UserRoleEnum.Admin);
             loginResponse.Token.Should().NotBeNull();
             loginResponse.DotsBalance.Should().Be(8500);
         }
